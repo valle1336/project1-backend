@@ -1,65 +1,36 @@
 package com.valle1336.demo.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+
+@Setter
+@Getter
 @Entity
+@Table(name = "message_Table")
 public class MessageEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String message;
     private int phoneNumber;
     private String mail;
     private String name;
+    private LocalDateTime creationDate;
 
-    public MessageEntity(long id, String message, int phoneNumber, String mail, String name) {
+    public MessageEntity(long id, String message, int phoneNumber, String mail, String name, LocalDateTime creationDate) {
         this.id = id;
         this.message = message;
         this.phoneNumber = phoneNumber;
         this.mail = mail;
         this.name = name;
+        this.creationDate = creationDate;
     }
 
     public MessageEntity() {
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public int getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
