@@ -15,16 +15,23 @@ public class MailService {
     private JavaMailSender mailSender;
 
     @Value("${spring.mail.username}")
-    private String fromMail;
+    private String toMail;
 
 
-    public void sendMail(String mail, MailStructure mailStructure) {
+    public void sendMail(MessageEntity message) {
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
 
-        simpleMailMessage.setFrom(fromMail);
-        simpleMailMessage.setSubject(mailStructure.getSubject());
-        simpleMailMessage.setText(mailStructure.getMessage());
-        simpleMailMessage.setTo(mail);
+        String mailText = String.format("Namn: %s\nTelefon: %s\nE-post: %s\nMeddelande: %s",
+                message.getName(),
+                message.getPhoneNumber(),
+                message.getMail(),
+                message.getMessage());
+
+
+        simpleMailMessage.setFrom(message.getMail());
+        simpleMailMessage.setSubject(message.getSubject());
+        simpleMailMessage.setText(mailText);
+        simpleMailMessage.setTo(toMail);
 
         mailSender.send(simpleMailMessage);
     }

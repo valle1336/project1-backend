@@ -20,14 +20,16 @@ public class MessageEntity {
     private String mail;
     private String name;
     private LocalDateTime creationDate;
+    private String subject;
 
-    public MessageEntity(long id, String message, String phoneNumber, String mail, String name, LocalDateTime creationDate) {
+    public MessageEntity(long id, String subject, String message, String phoneNumber, String mail, String name, LocalDateTime creationDate) {
         this.id = id;
         this.message = message;
         this.phoneNumber = phoneNumber;
         this.mail = mail;
         this.name = name;
         this.creationDate = creationDate;
+        this.subject = subject;
     }
 
     public MessageEntity() {
