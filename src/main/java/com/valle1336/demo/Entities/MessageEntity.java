@@ -16,12 +16,12 @@ public class MessageEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String message;
-    private int phoneNumber;
+    private String phoneNumber;
     private String mail;
     private String name;
     private LocalDateTime creationDate;
 
-    public MessageEntity(long id, String message, int phoneNumber, String mail, String name, LocalDateTime creationDate) {
+    public MessageEntity(long id, String message, String phoneNumber, String mail, String name, LocalDateTime creationDate) {
         this.id = id;
         this.message = message;
         this.phoneNumber = phoneNumber;
